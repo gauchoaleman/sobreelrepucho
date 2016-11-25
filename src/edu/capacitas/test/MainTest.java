@@ -2,6 +2,7 @@ package edu.capacitas.test;
 
 import edu.capacitas.domain.Cliente;
 import edu.capacitas.domain.Regalo;
+import edu.capacitas.domain.Sexo;
 import edu.capacitas.test.helper.ClienteHelper;
 import edu.capacitas.test.helper.RegaloHelper;
 
@@ -29,7 +30,13 @@ public class MainTest {
         listaRegalo.add(RegaloHelper.obtenerRegalo("Descripcion 5",new Float("250.5")));   //añadir elemento
         listaRegalo.add(RegaloHelper.obtenerRegalo("Descripcion 6",new Float("700.75")));   //añadir elemento
         Calendar fechaHoraNacimiento = Calendar.getInstance();
-        fechaHoraNacimiento.set(1982,Calendar.MAY,29,15,20);
+        fechaHoraNacimiento.set(1984,Calendar.MAY,29,15,20);
+        cliente.setNombre("Lucas");
+        cliente.setSexo(Sexo.MASCULINO);
+        cliente.setListaRegalos(listaRegalo);
+        cliente.setFechaHoraNacimiento(fechaHoraNacimiento);
+        System.out.println("Cliente armado desde MainTest:");
+        System.out.println(cliente);
 
 
 /*

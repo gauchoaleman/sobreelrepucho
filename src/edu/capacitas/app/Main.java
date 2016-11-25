@@ -1,5 +1,7 @@
 package edu.capacitas.app;
 
+import edu.capacitas.domain.Cliente;
+
 import java.io.IOException;
 
 /**
@@ -21,23 +23,26 @@ public class Main {
         //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
         do {
 
-            app.listarClientes();
+            //app.listarClientes();
             Menues.mostrarMenuPpal();
             //operacion = LeeCaracter();
             operacionString = FuncionesVariadas.pedirEntrada();
-            clearConsole();
+
             switch (operacionString) {
                 case "C":
                     app.agregarCliente();
-                    app.getListadoClientes();
+                    //app.listarClientes();
                     break;
                 case "L":
                     //gestionarRecursos();
                     //app. Clientes();
-                    app.getListadoClientes();
+                    app.listarClientes();
                     break;
                 case "I":
-                    //gestionarAlquileres();
+                    //borrarCliente();
+                    break;
+                case "E":
+                    app.buscarDeAfuera();
                     break;
                 case "S":
                 default:

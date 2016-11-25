@@ -43,6 +43,21 @@ public abstract class FuncionesVariadas {
         }
     }
 
+    public static Float pedirFlotante() {
+        String numero;
+        boolean ok;
+        Scanner reader;
+        reader = new Scanner(System.in);
+        numero = reader.next();
+        if(!isNumeric(numero) ){
+            ok=false;
+            return Float.parseFloat("0");
+        }
+        else{
+            return Float.parseFloat(numero);
+        }
+    }
+
     private static boolean isNumeric(String cadena){
         try {
             Integer.parseInt(cadena);

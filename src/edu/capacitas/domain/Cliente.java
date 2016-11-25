@@ -51,7 +51,7 @@ public class Cliente {
         return "Cliente{" +
                 " nombre='" + nombre+ '\'' +
                 ", sexo=" + sexo +
-                ", FechaDesde=" + df.format(fechaHoraNacimiento.getTime()) +
+
                 ", Regalos=" + listaRegalos +
                 '}';
     }

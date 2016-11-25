@@ -25,9 +25,7 @@ public class App {
     public void listarClientes(){
         System.out.println("Imprimiendo listado clientes");
         if (listadoClientes.size() > 0) {
-            for(int i=0; i<listadoClientes.size(); i++){
-                System.out.println(listadoClientes.get(i));
-            }
+            for(int i=0; i<listadoClientes.size(); i++) System.out.println(listadoClientes.get(i));
         }
         else {
             System.out.println("NO hay clientes para listar");
@@ -39,6 +37,9 @@ public class App {
 
         int id;
         Cliente cliente = new Cliente();
+        List<Regalo>  listadoRegalos = new ArrayList<>();
+
+
         //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
         System.out.println("Arranca agregar Cliente");
 
@@ -51,14 +52,7 @@ public class App {
         }
         System.out.println("Nombre:");
         cliente.setNombre(FuncionesVariadas.pedirEntrada());
-        System.out.println("Apellido: ");
-        cliente.setApellido(FuncionesVariadas.pedirEntrada());
-        System.out.println("Email: ");
-        cliente.setEmail(FuncionesVariadas.pedirEntrada());
-        System.out.println("Dni: ");
-        cliente.setDni(FuncionesVariadas.pedirEntrada());
-        //TODO, agregar sexo
-        System.out.println("Sexo:  ");
+        System.out.println("Sexo:");
         String Sexo = FuncionesVariadas.pedirEntrada();
 
         if( Sexo == "M") {
@@ -67,12 +61,22 @@ public class App {
         else {
             cliente.setSexo(edu.capacitas.domain.Sexo.FEMENINO);
         }
-        agregarRegalo();
+
+        System.out.println("Cuántos regalos?");
+        int ctdRegalos = FuncionesVariadas.pedirNumeroPositivo();
+
+        for( int i=0;i<ctdRegalos;i++)
+            listadoRegalos.add(leerRegalo());
+
+        cliente.setListaRegalos(listadoRegalos);
         listadoClientes.add(cliente);
         return cliente;
     }
+
+    public void buscarDeAfuera(){
+        buscarCliente(listadoClientes);
+    }
     private void buscarCliente(List<Cliente>listadoClientes){
-        //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
         System.out.println("Ingrese criterio de búsqueda: ");
         String aguja = FuncionesVariadas.pedirEntrada();
         System.out.println("Buscando " + aguja +"...");
@@ -83,21 +87,20 @@ public class App {
         }
     }
 
-    private boolean buscarEnCliente(Cliente cliente,String aguja) {
+    public boolean buscarEnCliente(Cliente cliente,String aguja) {
         boolean found;
+        //System.out.println("buscar en clientes:"+cliente);
         found = cliente.getNombre().contains(aguja);
-        found = found || cliente.getApellido().contains(aguja);
-        found = found || cliente.getEmail().contains(aguja);
-        found = found || cliente.getDni().contains(aguja);
+        found = found || cliente.getNombre().contains(aguja);
         return found;
     }
 
-    public Regalo agregarRegalo(){
+    public Regalo leerRegalo(){
 
         int id;
-        Regalo cliente = new Cliente();
+        Regalo regalo = new Regalo();
         //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
-        System.out.println("Arranca agregar Cliente");
+        System.out.println("Arranca leer regalo");
 
         System.out.println("Id: ");
         id = FuncionesVariadas.pedirNumeroPositivo();
@@ -106,27 +109,12 @@ public class App {
             System.out.println("Ingrese número");
             id = FuncionesVariadas.pedirNumeroPositivo();
         }
-        System.out.println("Nombre:");
-        cliente.setNombre(FuncionesVariadas.pedirEntrada());
-        System.out.println("Apellido: ");
-        cliente.setApellido(FuncionesVariadas.pedirEntrada());
-        System.out.println("Email: ");
-        cliente.setEmail(FuncionesVariadas.pedirEntrada());
-        System.out.println("Dni: ");
-        cliente.setDni(FuncionesVariadas.pedirEntrada());
-        //TODO, agregar sexo
-        System.out.println("Sexo:  ");
-        String Sexo = FuncionesVariadas.pedirEntrada();
+        System.out.println("Descripcion:");
+        regalo.setDescripcion(FuncionesVariadas.pedirEntrada());
+        System.out.println("Precio: ");
+        regalo.setPrecio(FuncionesVariadas.pedirFlotante());
 
-        if( Sexo == "M") {
-            cliente.setSexo(edu.capacitas.domain.Sexo.MASCULINO);
-        }
-        else {
-            cliente.setSexo(edu.capacitas.domain.Sexo.FEMENINO);
-        }
-        agregarRegalos();
-        listadoClientes.add(cliente);
-        return cliente;
+        return regalo;
     }
 
     /*public Cliente getCliente() {

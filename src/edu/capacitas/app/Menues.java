@@ -12,6 +12,7 @@ public abstract class Menues {
         System.out.println("*- Agregar  [C]liente                         *");
         System.out.println("*- Listar   c[L]ientes                        *");
         System.out.println("*- Borrar   cl[I]ente                         *");
+        System.out.println("*- Buscar   cli[E]ente                        *");
         System.out.println("*- [S]alir                                    *");
         System.out.println("***********************************************");
     }

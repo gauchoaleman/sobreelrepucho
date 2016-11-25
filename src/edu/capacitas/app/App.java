@@ -4,7 +4,10 @@ import edu.capacitas.domain.Cliente;
 import edu.capacitas.domain.Regalo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 /**
  * Created by Stefan on 25/11/2016.
@@ -43,13 +46,6 @@ public class App {
         //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
         System.out.println("Arranca agregar Cliente");
 
-        System.out.println("Id: ");
-        id = FuncionesVariadas.pedirNumeroPositivo();
-        while( id<0 )
-        {
-            System.out.println("Ingrese número");
-            id = FuncionesVariadas.pedirNumeroPositivo();
-        }
         System.out.println("Nombre:");
         cliente.setNombre(FuncionesVariadas.pedirEntrada());
         System.out.println("Sexo:");
@@ -61,6 +57,22 @@ public class App {
         else {
             cliente.setSexo(edu.capacitas.domain.Sexo.FEMENINO);
         }
+
+        System.out.println("Fecha de nacimiento:");
+        System.out.println("Día:");
+        int dia = FuncionesVariadas.pedirNumeroPositivo();
+        System.out.println("Mes:");
+        int mes = FuncionesVariadas.pedirNumeroPositivo();
+        System.out.println("Anio:");
+        int anio = FuncionesVariadas.pedirNumeroPositivo();
+        Calendar fechaHoraNacimiento = Calendar.getInstance();
+
+        fechaHoraNacimiento.set(Calendar.MONTH,mes-1);
+        fechaHoraNacimiento.set(Calendar.DAY_OF_MONTH,dia);
+        fechaHoraNacimiento.set(Calendar.YEAR,anio);
+
+        cliente.setFechaHoraNacimiento(fechaHoraNacimiento);
+
 
         System.out.println("Cuántos regalos?");
         int ctdRegalos = FuncionesVariadas.pedirNumeroPositivo();
@@ -99,16 +111,9 @@ public class App {
 
         int id;
         Regalo regalo = new Regalo();
-        //FuncionesVariadas funcionesVariadas = new FuncionesVariadas();
+
         System.out.println("Arranca leer regalo");
 
-        System.out.println("Id: ");
-        id = FuncionesVariadas.pedirNumeroPositivo();
-        while( id<0 )
-        {
-            System.out.println("Ingrese número");
-            id = FuncionesVariadas.pedirNumeroPositivo();
-        }
         System.out.println("Descripcion:");
         regalo.setDescripcion(FuncionesVariadas.pedirEntrada());
         System.out.println("Precio: ");
@@ -116,6 +121,7 @@ public class App {
 
         return regalo;
     }
+
 
     /*public Cliente getCliente() {
         return cliente;

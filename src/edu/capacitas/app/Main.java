@@ -39,7 +39,7 @@ public class Main {
                     app.listarClientes();
                     break;
                 case "I":
-                    //borrarCliente();
+                    //app.borrarCliente();
                     break;
                 case "E":
                     app.buscarDeAfuera();
